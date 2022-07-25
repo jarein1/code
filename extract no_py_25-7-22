@@ -1,0 +1,48 @@
+n = int (input("Enter a three digit number"))
+
+if n > 99 and n < 1000:
+    m = n // 100
+    m2 = (n % 100) // 10
+    m3 = n % 10
+    
+    if m%2==0:
+        print("sum of the digits=",(m+m2+m3))
+    else:
+        print("product of the output=",(m*m2*m3))
+else:
+    print("It is not a three digit number")
+
+  
+//  Prog 2:
+  
+  n = int (input("Enter a five digit number"))
+
+if n > 9999 and n < 100000:
+    # d1 = n // 10000
+    # d2 = (n % 10000) // 1000
+    md = (n % 1000) // 100
+    # d4 =(n%100) // 10
+    d5 = (n%10)
+    
+    if md%2==0:
+        print("square of the digits=",(d5*d5))
+    else:
+        print("product of the output=",(d5+d5+d5))
+else:
+    print("It is not a five digit number")
+    
+    
+Prog 3    
+#  WAP in python to enter a number and count the no of digits in it.
+
+
+a=int(input("enter the number"))
+t=a
+c=0
+while t>0: 
+    c=c+1
+    t=t//10
+print("no of digits in",a,"+",c)
+    
+
+       
