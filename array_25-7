@@ -22,16 +22,19 @@ void input() {
         }
     }
 }
-    // std:: cout<<"the matrix is :";
-    // for(i=0;i< n1;i++)
-    // {
-    //     for (j=0;j<n2;j++)
-    //     {
-    //         std:: cout<<a[i][j];
-    //     }
-    //   std:: cout<<endl;
-    }
-void matrix::show(){
+    
+   
+void matrix::display()
+{
+for(i=0;i< n1;i++)
+     {
+         for (j=0;j<n2;j++)
+         {
+             std:: cout<<a[i][j];
+         }
+       std:: cout<<endl;
+     }
+
     
 }
 int matrix:: add(matrix x, matrix y)
