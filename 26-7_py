@@ -1,0 +1,10 @@
+Prog 1 // FIND THE SUM OF THE DIGITS:
+
+a=int(input("enter the number: "))
+sum=0
+while a>0: 
+    m=a%10   
+    sum=sum+m  
+    a=a // 10  
+print("sum of the digits are =",sum)
+    
