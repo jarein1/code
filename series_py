@@ -1,0 +1,52 @@
+# s= 1! + 2! +3! + .......+ n!
+
+r = int(input("Enter a range: "))   
+i=1
+s=0
+while i<=r:
+    f=1
+    j=1
+    while j<=i:
+        f=f*j
+        j=j+1
+    s=s+f
+    i=i+1
+    
+print("THE SERIES ARE =",s)
+
+# s= 1!/2! + 2!/3! +3!/4! + .......+ n!/(n+1)!
+
+r = int(input("Enter a range: "))   
+i=1
+s=0
+while i<=r:
+    f=1
+    j=1
+    while j<=i:
+        f=f*j
+        j=j+1
+    s=s+(f/(i+1))
+    i=i+1
+    
+print("THE SERIES ARE =",s)
+
+
+#prog: # # s= 1 +4 +9+16+........100
+i = 1
+a = 0
+while i <= 10:
+    a = a + (i**2)
+    i = i + 1
+print("Sum of the series =",a)
+
+
+#prog# # s= 2 +5 +10+17+........101
+i = 1
+a = 0
+while i <= 10:
+    a = a + (i**2)+1
+    i = i + 1
+print("Sum of the series =",a)
+
+
+
