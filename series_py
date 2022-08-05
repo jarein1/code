@@ -31,7 +31,7 @@ while i<=r:
 print("THE SERIES ARE =",s)
 
 
-#prog: # # s= 1 +4 +9+16+........100
+#prog1: # # s= 1 +4 +9+16+........100
 i = 1
 a = 0
 while i <= 10:
@@ -40,7 +40,7 @@ while i <= 10:
 print("Sum of the series =",a)
 
 
-#prog# # s= 2 +5 +10+17+........101
+#prog2# # s= 2 +5 +10+17+........101
 i = 1
 a = 0
 while i <= 10:
@@ -48,5 +48,36 @@ while i <= 10:
     i = i + 1
 print("Sum of the series =",a)
 
+# prog3: # s= 2 +6 +12+20+........110
+i = 1
+a = 0
+while i <= 10:
+    a = a + (i**2)+i
+    i = i + 1
+print("Sum of the series =",a)
 
+#prog4 #  s= 1 +11 +111 +1111
+i = 0
+a = 0
+s=0
+while i <= 4:
+    a = a + (10**i)
+    s=s+a
+    i = i + 1
+print("Sum of the series =",s)
+
+Prog5:#  s= x + x/2! +x/3! +x/4!
+x=int(input ("Enter the value of n "))
+n=int(input ("Enter the value of x "))
+i = 1
+s=0
+while i<=n:
+    f =1
+    j=1
+    while j<= i:
+        f=f*j
+        j=j+1
+    s=s+ x/f
+    i = i + 1
+print("Sum of the series =",s)
 
