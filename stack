@@ -1,0 +1,94 @@
+#include <iostream.h>
+#include <conio.h>
+//#define=macro(code replacement technique)throughout the program value of size=5
+#define size 5
+using namespace std;
+
+class Stack
+{
+  private://data member
+    int a[size],top;//a[size]=a[5],top=to hold the index of the latest/newest/last inserted element
+  public://member method
+    void push(int);
+    char pop();
+    void display();
+    Stack()//constructor
+    {
+        top=-1;
+    }
+};
+
+void Stack::push(int x)//insterting the elements
+{
+    if(top==size-1)//checking for stack overflow
+    {
+        cout<<"STACK OVERFLOW";
+    }
+    else
+    {
+        top++;
+        a[top]=x;
+        cout<<"ELEMENT PUSHED";
+    }
+}
+char Stack::pop()
+{
+    if(top==-1)
+    {
+        cout<<"STACK UNDERFLOW";
+        return 'f';
+    }
+    else
+    {
+        cout<<"POP ELEMENT="<<a[top];
+        top--;
+        return 't';
+    }
+    
+}
+
+void Stack::display()
+{
+    if(top==-1)
+        cout<<"STACK IS EMPTY";
+    else
+    {
+        cout<<"THE ELEMENTS ARE:\n";
+        for(int i=top; i>=0; i--)
+        {
+            cout<<a[i]<<endl;
+        }
+    }
+}
+int main()
+{
+    Stack st;
+    int ch,n;
+    while(1)
+    {
+        clrscr();
+        cout<<"1. push\n2. pop\n3. display\n4. exit\nenter the choice: ";
+        cin>>ch;
+        switch(ch)
+        {
+            case 1:
+                cout<<"ENTER THE ELEMENT TO BE PUSHED: ";
+                cin>>n;
+                st.push(n);
+                break;
+            case 2:
+                st.pop();
+                break;
+            case 3:
+                st.display();
+                break;
+            case 4:
+                return 0;
+            default:
+                cout<<"INVALID CHOICE!ERROR 404!";
+        }
+        getch();
+    }
+    
+    return 0;
+}
