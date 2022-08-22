@@ -17,20 +17,21 @@ Python shell  : -
   	       Python is an interpreter language. It means it executes the code line by line. Python provides a Python Shell, which is used to execute a single Python command and display the result.It is also known as REPL (Read, Evaluate, Print, Loop), where it reads the command, evaluates the command, prints the result, and loop it back to read the command again.
 
 Indentation :- 
-Indentation refers to the spaces at the beginning of a code line. Python uses indentation to indicate a block of code.
+	 Indentation refers to the spaces at the beginning of a code line. Python uses indentation to indicate a block of code.
 Atoms :-
+
 Keywords :- 
-Keywords are the reserved words in Python. We cannot use a keyword as a variable name, function name or any other identifier. They are used to define the syntax and structure of the Python language.
+	Keywords are the reserved words in Python. We cannot use a keyword as a variable name, function name or any other identifier. They are used to define the syntax and structure of the Python language.
 Identifiers :-
 	An identifier is a name given to entities like class, functions, variables, etc. It helps to differentiate one entity from another.
 
 Literals :-	
-Literals in Python is defined as the raw data assigned to variables or constants while programming. We mainly have five types of literals which includes string literals, numeric literals, Boolean  literals, literal collections and a special literal None.
+	Literals in Python is defined as the raw data assigned to variables or constants while programming. We mainly have five types of literals which includes string literals, numeric literals, Boolean  literals, literal collections and a special literal None.
 Strings :- 	
-A string is a sequence of characters .A character is simply a symbol. For example, the English language has 26 characters .In Python, a string is a sequence of Unicode characters. Unicode was introduced to include every character in all languages and bring uniformity in encoding.
+	A string is a sequence of characters .A character is simply a symbol. For example, the English language has 26 characters .In Python, a string is a sequence of Unicode characters. Unicode was introduced to include every character in all languages and bring uniformity in encoding.
 EG :-   	 my_string = 'Hello'
 print(my_string)
 
 Operators :-         
-Python Operators in general are used to perform operations on values and variables. These are standard symbols used for the purpose of logical and arithmetic operations. In this article, we will look into different types of Python operators.
+	Python Operators in general are used to perform operations on values and variables. These are standard symbols used for the purpose of logical and arithmetic operations. In this article, we will look into different types of Python operators.
 
