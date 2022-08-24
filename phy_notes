@@ -52,10 +52,51 @@ UNIT 5 :
 		
 ..................x..................................x.................................x..............................
 
-Input and output statement :-
-				The input() function helps to enter data at run time by the user and the output function print() is used to display the result of the program on the screen after execution.
+Input and output statement
+		We use the widely used print() statement to display some data on the screen.
+We can output the particular data on some device(screen) or even in some file.
+While writing real-world programs, we have to write statements that explicitly output numbers and strings.
+SYNTAX:
+print(object(s), sep=' ', end='\n', file=file, flush=False)
 
-control statement :-
+Definition of few keywords of the above statement:
+
+	• object(s) are the values to be printed on the screen. They are converted to strings before getting printed.
+
+	• sep keyword is used to specify how to separate the objects inside the same print statement. By default, we have it as sep=' ', a space between two objects.
+
+	• end is used to print a particular thing after all the values are printed. By default, we have end as \n, which provides a new line after each print() statement.
+
+	• file is used to specify where to display the output. By default, it is sys.stdout (which is the screen).
+
+	• flush specifies the Boolean expression if the output is False or True. By default, it is False. In Python, the output from the print() goes into a buffer. Using the flush= True parameter helps in flushing the buffer as soon as we use the print() statement.
+
+Example :
+
+print(0, 1, 2)
+print(0, 1, 2, sep='$')
+print(1, 2, sep='@', end='%')
+Output:
+
+0 1 2  # Here we have space between values by default.
+0$1$2
+1@2%
+
+Python Input
+	In Python, input( ) function is used to accept data as input at run time. The syntax for input() function is,
+Variable = input (“prompt string”)
+Where, prompt string in the syntax is a statement or message to the user, to know what input can be given.
+If a prompt string is used, it is displayed on the monitor; the user can provide expected data from the input device. The input( ) takes whatever is typed from the keyboard and stores the entered data in the given variable. If prompt string is not given in input( ) no message is displayed on the screen, thus, the user will not know what is to be typed as input.
+The input ( ) accepts all data as string or characters but not as numbers. If a numerical value is entered, the input values should be explicitly converted into numeric data type. The int( ) function is used to convert string data as integer data explicitly.
+
+Example :
+x = int (input(“Enter Number 1: ”))
+y = int (input(“Enter Number 2: ”))
+print (“The sum = ”, x+y)
+Output:
+Enter Number 1: 34
+Enter Number 2: 56
+The sum = 90
 			
 				
 
