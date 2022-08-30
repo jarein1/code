@@ -1,0 +1,63 @@
+def process(a):
+    s=0
+    i=1
+    while i<=0:
+        if a%2==0 :
+            s=s+i 
+        i=i+1
+    return (s)
+n=int(input("Enter the number: "))
+r=process(n)
+if r==n:
+    print("It is a perfect number")
+elif r>n:
+      print("It is abundent number")
+else:
+      print("It is deficient number")
+      
+.............................x................................x........................................x....................
+
+def palin(n):
+    s=0
+    while n>0:
+        d=n%10
+        s=s*10+d
+        n=n//10
+    return s
+n=int(input("Enter the number: "))
+r=palin(n)
+if (palin(r)==n):
+    print("It is a palindrome number")
+else:
+      print("It is not a palindrome number")
+..................................x...................................x...........................................x
+def count(n):
+    c=0
+    while n>0:
+        c=n%10
+        n=n//10
+    return c
+
+def pwr(p,q):
+    f=1
+    i=1
+    while i<=q:
+        f=f*p
+        i=i*1
+    return f
+
+def process (x,y):
+        s=0
+        while x>0:
+            d=x%10
+            s=s+pwr(d,y)
+            x=x//y
+            
+a=int(input("Enter the number: "))
+b=count(a)
+r= process (a,b)
+if r==a:
+    print("Armstrong number")
+else:
+    print("Not an Armstrong number")
+      
