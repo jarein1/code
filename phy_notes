@@ -35,7 +35,7 @@ print(my_string)
 Operators :-         
 	Python Operators in general are used to perform operations on values and variables. These are standard symbols used for the purpose of logical and arithmetic operations. In this article, we will look into different types of Python operators.
 
-
+...............................x.............................x...........................................x.......................
 
 UNIT 5 :
 1. Input and output statement
@@ -98,5 +98,32 @@ Enter Number 1: 34
 Enter Number 2: 56
 The sum = 90
 			
-				
+Control Statement :-
+		     In Python, Loops are used to iterate repeatedly over a block of code. In order to change the way a loop is executed from its usual behavior, control statements are used. Control statements are used to control the flow of the execution of the loop based on a condition.
 
+Branching: using If Else in Python:-
+				   After if, the next conditional branch control you need to learn is ‘else’. This command is a companion to if and runs as an alternative version. When the if branch is True, it runs; when the if branch is False, the else branch runs.
+if True:
+    print("The first branch ran")
+else:
+    print("The second branch ran")
+Run this program and you’ll see ‘The first branch ran’. But change True to False:
+if False:
+    print("The first branch ran")
+else:
+    print("The second branch ran")
+…and you’ll see ‘The second branch ran’. Let’s use this to expand our password program. Enter the code from password2.py. Password2.py
+password = "qwerty"
+attempt = input("Enter password: ")
+
+if attempt == password:
+    print("Welcome")
+else:
+    print("Incorrect password!")
+Run the program again. If you get the password correct now, you’ll get a welcome message. Otherwise, you’ll get an ‘incorrect password’ message.
+
+while loop :-
+		i = 1
+		while i < 6:
+ 	  	   print(i)
+   		i+=1
