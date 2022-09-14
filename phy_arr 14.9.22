@@ -1,0 +1,69 @@
+a=list()
+s=0
+n=int(input("How many elements do you want to enter? "))
+for i in range(n):
+    e=int(input("Enter the number: "))
+    a.append(e)
+    s=s+a[i]
+avg= s/n
+print("Sum=",s)
+print("Average=",avg)
+
+..................x........................x............................x
+# wap to enter 10 number and find the sum and avg of even and odd numbers 
+a=list()
+s=0
+se=0
+so=0
+e=0
+o=0
+n=int(input("How many elements do you want to enter? "))
+for i in range(n):
+    e=int(input("Enter the number: "))
+    a.append(e)
+    if a[i]%2==0:
+        se=se+a[i]
+        e=e+1
+    else:
+        so=so+a[i]
+        o=0+1
+avge= se/e
+avgo=se/o
+print("Avg of even = ",avge)
+print("Average of odd =",avgo)
+
+......................x.....................................x.........................
+# wap to enter n number and find out whether all are even or not
+a=list()
+f=0
+n=int(input("How many elements do you want to enter? "))
+for i in range(n):
+    e=int(input("Enter the number: "))
+    a.append(e)
+    if a[i]%2==0:
+        f=f+1
+if (f==n):
+    print ("All numbers are even")
+else:
+    print("All are not even")
+
+...........................x............................x................
+# wap to enter n number andfind the largest
+a=list()
+l=0
+n=int(input("How many elements do you want to enter? "))
+for i in range(n):
+    e=int(input("Enter the number: "))
+    a.append(e)
+    if(a[i]>l):
+        l=a[i]
+
+print(l," is the largest")
+
+
+
+
+
+
+
+
