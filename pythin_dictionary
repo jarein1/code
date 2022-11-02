@@ -1,0 +1,24 @@
+// program to enter numbers in dictoinary and to find the sum and the prime number from it.
+
+d=dict()
+n=int(input("no. of elements to enter : "))
+for i in range(n):
+    num=int(input("enter the elements : "))
+    d[i]=num
+for i in d:
+    s=0
+    t=d[i]
+    while(t>0):
+        dig=t%10
+        s=s+dig
+        t=t//10
+    f=1
+    j=2
+    while(j<s):
+        if(s%j==0):
+            f=0
+            break
+        j=j+1
+    if(f==1):
+        print(d[i],"is a prime number")
+#FUCK YOU ALL!!
