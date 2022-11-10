@@ -1,0 +1,190 @@
+#include <iostream.h>
+#include <conio.h>
+struct node
+{
+    int data;
+    struct node *llink,*rlink;
+};
+typedef struct node node;
+node *head=NULL;
+void insert_beg(int n)
+{
+    node *t=new node;
+    if(t==NULL)
+    {
+        cout<<"could not insert";
+        return;
+    }
+    t->data=n;
+    t->llink=NULL;
+    t->rlink=head;
+    if(head!=NULL)
+    {
+        head->llink=t;
+    }
+    head=t;
+}
+void insert_end(int n)
+{
+    node *t=new node,*p;
+    if(t==NULL)
+    {
+        cout<<"could not insert:";
+        return;
+    }
+    t->rlink=NULL;
+    t->data=n;
+    if(head==NULL)
+    {
+        t->llink=NULL;
+        head=t;
+    }
+    else
+    {
+        for(p=head; p->rlink!=NULL; p=p->rlink);
+        p->rlink=t;
+        t->llink=p;
+    }
+}
+void display()
+{
+    node *t;
+    if(head==NULL)
+    {
+        cout<<"empty list";
+    }
+    else
+    {
+        cout<<"The elements are:";
+        for(t=head; t!=NULL; t=t->rlink)
+            cout<<t->data<<" ";
+    }
+}
+void del_beg()
+{
+    node *t;
+    if(head==NULL)
+    {
+        cout<<"list is empty";
+    }
+    else
+    {
+        t=head;
+        cout<<"deleted item:"<<head->data;
+        head=head->rlink;
+        head->llink=NULL;
+        free(t);
+    }
+}
+void del_end()
+{
+    if(head==NULL)
+        cout<<"empty list";
+    else if(head->rlink==NULL)
+    {
+        cout<<head->data<<" is being deleted";
+        free(head);
+        head=NULL;
+    }
+    else
+    {
+        node *t;
+        for(t=head; t->rlink!=NULL; t=t->rlink);
+        cout<<t->data<<" is being deleted";
+        t->llink->rlink=NULL;
+        free(t);
+    }
+}
+void del_val(int n)
+{
+    node *t,*p;
+    int f=0;
+    if(head==NULL)
+        cout<<"empty  list";
+    else if(head->data==n)
+    {
+        t=head;
+        head=head->rlink;
+        if(head!=NULL)
+            head->rlink->llink=NULL;
+        free(t);
+        cout<<"item deleted";
+    }
+    else
+    {
+        for(t=head; t->rlink!=NULL; t=t->rlink)
+        {
+            if(t->rlink->data==n)
+            {
+                p=t->rlink;
+                t->rlink=p->rlink;
+                if(p->rlink!=NULL)
+                    p->rlink->llink=NULL;
+                free(p);
+                f=1;
+                cout<<"item deleted";
+                break;
+            }
+        }
+        if(f==0)
+            cout<<"item is not found";
+    }
+}
+void reverse()
+{
+    node *t,*p,*q=NULL;
+    for(t=head; t!=NULL; t=t->llink)
+    {
+        p=t->llink;
+        t->llink=t->rlink;
+        t->rlink=p;
+        q=t;
+    }
+    head=q;
+}
+void main()
+{
+    int ch,n;
+    while(1)
+    {
+        clrscr();
+        cout<<"1.Insert at the beginning\n2.Insert at the end\n3.Delete from the beginning\n4.Delete from the end\n5.Display\n6.DELETE FROM A\n7.REVERSE\n8.EXIT\n";
+        cout<<"enter your choice:";
+        cin>>ch;
+        switch(ch)
+        {
+            case 1:
+                cout<<"enter the number to be inserted:";
+                cin>>n;
+                insert_beg(n);
+                break;
+            case 2:
+                cout<<"enter the number to be inserted:";
+                cin>>n;
+                insert_end(n);
+                break;
+            case 3:
+                del_beg();
+                break;
+            case 4:
+                del_end();
+                break;
+            case 5:
+                display();
+                break;
+            case 6:
+                cout<<"enter the number to be deleted:";
+                cin>>n;
+                del_val(n);
+                break;
+            case 7:
+                reverse();
+                break;
+            case 8:
+                return;
+            default:
+                cout<<"invalid choice";
+        }
+        getch();
+    }
+}
