@@ -100,3 +100,119 @@ int main()
     }
     return 0;
 }
+................................................................
+// circular tree
+
+#include<iostream>
+#include<conio.h>
+#include<stdlib.h>
+#define size 5
+using namespace std;
+class CirQueue
+{
+  private:
+    int arr[size],front,rear;
+  public:
+    void Enque(int);
+    void Deque();
+    void display();
+    CirQueue()//constructor
+    {
+        front=-1;
+        rear=-1;
+    }
+};
+
+void CirQueue::Enque(int x)
+{
+    // %size = circulation method
+    if(front==(rear+1)%size)//full
+    {
+        cout<<"\nTHE QUEUE IS FULL";
+    }
+    else if(front==-1 && rear==-1)//empty state
+    {
+        rear++;
+        front++;
+        arr[rear]=x;
+    }
+    else//neither full nor empty(partially filled state)
+    {
+        rear=(rear+1)%size;
+        arr[rear]=x;
+    }
+}
+
+void CirQueue::Deque()
+{
+    if(front==-1 && rear==-1)
+    {
+        cout<<"\nQueue is empty!";
+    }
+    else if(front==rear)//checking for one element
+    {
+        cout<<"\nTHE ELEMENT "<<arr[front]<<" IS DELETED";//element is removed
+        front=rear=-1;
+    }
+    else
+    {
+        cout<<"\nTHE ELEMENT "<<arr[front]<<" IS DELETED";
+        front=(front+1)%size;
+    }
+}
+
+void CirQueue::display()
+{
+    int i;
+    cout<<"\nFRONT = "<<front<<"\nREAR = "<<rear<<endl;
+    if(front==-1 && rear==-1)
+    {
+        cout<<"\nTHE QUEUE IS EMPTY!";
+    }
+    else
+    {
+        cout<<"\nTHE ELEMENTS IN THE QUEUE :\n";
+        for(i=front; i!=rear ; i=(i+1)%size)
+        {
+            cout<<arr[i]<<" ";
+        }
+        cout<<arr[i];
+    }
+}
+
+int main()
+{
+    CirQueue Q;
+    int ch,n;
+    while(1)
+    {
+       system("cls");
+        cout<<"1.Insert\n2.Delete\n3.Display\n4.Exit\n";
+        cout<<"\nENTER THE CHOICE :";
+        cin>>ch;
+        switch(ch)
+        {
+            case 1:
+                cout<<"\nENTER THE ELEMENT TO BE INSERTED :";
+                cin>>n;
+                Q.Enque(n);
+                break;
+                
+            case 2:
+                Q.Deque();
+                break;
+                
+            case 3:
+                Q.display();
+                break;
+                
+            case 4:
+                return 0;
+                
+            default:
+                cout<<"\nINVALID CHOICE";
+        }
+        getch();
+    }
+    return 0;
+}
