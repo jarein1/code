@@ -1,0 +1,102 @@
+//normal queue implementation
+
+#include <iostream.h>
+#include <conio.h>
+#define size 5
+using namespace std;
+class Queue
+{
+  private:
+    int arr[size],front,rear;
+  public:
+    void Enque(int);
+    void Deque();
+    void display();
+    Queue()//constructor
+    {
+        front=-1;
+        rear=-1;
+    }
+};
+
+void Queue::Enque(int x)
+{
+    if(rear==size-1)//full
+        cout<<"THE QUEUE IS FULL";
+    else if(front==-1 && rear==-1)//empty state
+    {
+        rear++;
+        front++;
+        arr[rear]=x;
+    }
+    else//neither full nor empty(partially filled state)
+    {
+        rear++;
+        arr[rear]=x;
+    }
+}
+
+void Queue::Deque()
+{
+    if(front==-1 && rear==-1)
+        cout<<"Queue is empty";
+    else if(front==rear)//checking for one element
+    {
+        cout<<"THE DELETED ELEMENT IS :"<<arr[front];//element is removed
+        front=rear=-1;
+    }
+    else
+    {
+        cout<<"THE DELETED ELEMENT IS :"<<arr[front];
+        front++;
+    }
+}
+
+void Queue::display()
+{
+    if(front==-1 && rear==-1)
+        cout<<"THE QUEUE IS EMPTY";
+    else
+    {
+        cout<<"THE ELEMENTS IN THE QUEUE :\n";
+        for(int i=front; i<=rear ; i++)
+            cout<<arr[i]<<" ";
+            
+    }
+}
+int main()
+{
+    Queue Q;
+    int ch,n;
+    while(1)
+    {
+        clrscr();
+        cout<<"1.Insert\n2.Delete\n3.Display\n4.Exit";
+        cout<<"\nENTER THE CHOICE :";
+        cin>>ch;
+        switch(ch)
+        {
+            case 1:
+                cout<<"ENTER THE ELEMENT TO BE INSERTED :";
+                cin>>n;
+                Q.Enque(n);
+                break;
+                
+            case 2:
+                Q.Deque();
+                break;
+                
+            case 3:
+                Q.display();
+                break;
+                
+            case 4:
+                return 0;
+                
+            default:
+                cout<<"INVALID CHOICE";
+        }
+        getch();
+    }
+    return 0;
+}
