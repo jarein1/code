@@ -1,35 +1,34 @@
 #include <iostream.h>
 #include <conio.h>
+
 struct node
 {
     int data;
-    struct node *llink,*rlink;
-};
-typedef struct node node;
+    struct node*llink,*rlink;
+};*tail;
+typedef struct node node;;
 node *head=NULL;
 void insert_beg(int n)
 {
-    node *t=new node;
+    node*t=new node;
     if(t==NULL)
     {
-        cout<<"could not insert";
+        cout <<"could not insert";
         return;
     }
     t->data=n;
     t->llink=NULL;
     t->rlink=head;
     if(head!=NULL)
-    {
         head->llink=t;
-    }
     head=t;
 }
 void insert_end(int n)
 {
-    node *t=new node,*p;
+    node*t= new node,*pos;
     if(t==NULL)
     {
-        cout<<"could not insert:";
+        cout <<"could not insert";
         return;
     }
     t->rlink=NULL;
@@ -37,79 +36,65 @@ void insert_end(int n)
     if(head==NULL)
     {
         t->llink=NULL;
-        head=t;
+        head= t;
     }
     else
     {
-        for(p=head; p->rlink!=NULL; p=p->rlink);
-        p->rlink=t;
-        t->llink=p;
-    }
-}
-void display()
-{
-    node *t;
-    if(head==NULL)
-    {
-        cout<<"empty list";
-    }
-    else
-    {
-        cout<<"The elements are:";
-        for(t=head; t!=NULL; t=t->rlink)
-            cout<<t->data<<" ";
+        for(pos=head; pos->rlink!=NULL; pos=pos->rlink);
+        {
+            pos->rlink=t;
+            t->llink=pos;
+        }
     }
 }
 void del_beg()
 {
-    node *t;
-    if(head==NULL)
+    node*t=new node;
+    if(t==NULL)
     {
-        cout<<"list is empty";
+        cout <<"could not insert";
+        return;
     }
-    else
-    {
-        t=head;
-        cout<<"deleted item:"<<head->data;
-        head=head->rlink;
-        head->llink=NULL;
-        free(t);
-    }
+    t=head;
+    head=head->rlink;
+    head->llink=NULL;
+    free(t);
+    cout<<"Element deleted";
 }
 void del_end()
 {
-    if(head==NULL)
-        cout<<"empty list";
+    node*t;
+    if(t==NULL)
+    {
+        cout <<"could not insert";
+        return;
+    }
     else if(head->rlink==NULL)
     {
-        cout<<head->data<<" is being deleted";
         free(head);
         head=NULL;
     }
     else
     {
-        node *t;
         for(t=head; t->rlink!=NULL; t=t->rlink);
-        cout<<t->data<<" is being deleted";
-        t->llink->rlink=NULL;
-        free(t);
+        {
+            t->llink->rlink=NULL;
+            free(t);
+            cout<<"Element deleted";
+        }
     }
 }
-void del_val(int n)
+void del_choice(int n)
 {
     node *t,*p;
     int f=0;
-    if(head==NULL)
-        cout<<"empty  list";
-    else if(head->data==n)
+    if(t==NULL)
     {
-        t=head;
-        head=head->rlink;
-        if(head!=NULL)
-            head->rlink->llink=NULL;
-        free(t);
-        cout<<"item deleted";
+        cout <<"could not insert";
+        return;
     }
+    else if(head->data==n)
+        del_beg();
     else
     {
         for(t=head; t->rlink!=NULL; t=t->rlink)
@@ -127,20 +112,37 @@ void del_val(int n)
             }
         }
         if(f==0)
-            cout<<"item is not found";
+            cout<<"Item is not found";
     }
 }
 void reverse()
 {
-    node *t,*p,*q=NULL;
-    for(t=head; t!=NULL; t=t->llink)
+    node *t,*p,*r=NULL;
+    for(t=head; t!=NULL; t=t->rlink)
     {
-        p=t->llink;
-        t->llink=t->rlink;
-        t->rlink=p;
-        q=t;
+        p=t->rlink;
+        t->rlink=t->llink;
+        t->llink=p;
+        t=p;
     }
-    head=q;
+    t=head;
+    head= tail;
+    tail=t;
+    cout<<"Element reversed";
+}
+void display()
+{
+    node *t;
+    if(head==NULL)
+    {
+        cout<<"empty list";
+    }
+    else
+    {
+        cout<<"The elements are:";
+        for(t=head; t!=NULL; t=t->rlink)
+            cout<<t->data<<" ";
+    }
 }
 void main()
 {
@@ -175,16 +177,322 @@ void main()
             case 6:
                 cout<<"enter the number to be deleted:";
                 cin>>n;
-                del_val(n);
+                del_choice(n);
                 break;
             case 7:
                 reverse();
                 break;
-            case 8:
-                return;
             default:
                 cout<<"invalid choice";
         }
         getch();
     }
+}
+.................................................................................
+
+//link list
+
+#include <iostream>
+#include <conio.h>
+
+using namespace std;
+
+struct node
+{
+    int data;
+    struct node * link;
+};
+
+typedef struct node node;;
+node *head =NULL;
+
+void ins_beg(int n)
+{
+    node *t=new node,*p;
+    if(t==NULL)
+    {
+        cout<< "Could not insert";
+        return;
+    }
+    t->data=n;
+    t->link=head;
+    head=t;
+    
+}
+void ins_choice()
+{
+    int pos,i=1;
+    node *temp,*newnode;
+    cout<<"Enter the position to Enter the data: ";
+    cin>>pos;
+    if(pos>10)
+        cout<<"invalid positon";
+    else
+    {
+        temp=head;
+        while(i<pos)
+        {
+            temp=temp->link;
+            i++;
+        }
+        node *newnode=new node;
+        cout<<"Enter the data: ";
+        cin>>newnode->data;
+        newnode->link=temp->link;
+        temp->link=newnode;
+        cout<<"Element Inserted.";
+        
+    }
+    
+}
+
+void insert_end(int n)
+{
+    node *t =new node,*p;
+    if(t==NULL)
+    {
+        cout<< "Could not insert";
+        return;
+    }
+    t->data=n;
+    t->link=NULL;
+    if(head==NULL)
+        head=t;
+    else
+    {
+        for(p=head; p->link!=NULL; p=p->link);
+        p->link=t;
+    }
+}
+void delete_beg()
+{
+    node *t;
+    if(head==NULL)
+        cout<<"empty list";
+    else
+    {
+        head=head->link;
+        cout<<"Item deleted";
+    }
+}
+void delete_end()
+{
+    if(head==NULL)
+        cout<<"Empty list";
+    else if(head->link==NULL)
+    {
+        cout<<head->data<<" has been deleted.";
+        free(head);
+        head=NULL;
+    }
+    else
+    {
+        node *t;
+        for(t=head; t->link->link!=NULL; t=t->link);
+        {
+            cout<<t->link->data<<" has been deleted.";
+            free(t->link);
+            t->link=NULL;
+        }
+    }
+    
+}
+void del_choice(int n)
+{
+    node *t,*p;
+    int f=0;
+    if(head==NULL)
+        cout<<"Empty list";
+    else if(head->data==n)
+    {
+        t=head;
+        head=head->link;
+        free(t);
+        cout<<"Item Deleted";
+    }
+    else
+    {
+        for(t=head; t->link!=NULL; t=t->link)
+        {
+            if(t->link->data==n)
+            {
+                p=t->link;
+                t=t->link->link;
+                free(p);
+                f=1;
+                cout<<"Item deleted";
+                break;
+            }
+        }
+        if(f==0)
+            cout<<"Item not found";
+    }
+}
+void display()
+{
+    node*t;
+    if(head==NULL)
+        cout<<"Empty list";
+    else
+    {
+        cout<<"\nElements are:";
+        for(t=head; t!=NULL; t=t->link)
+            cout<<t->data<<" ";
+    }
+}
+int main()
+{
+    int ch,n;
+    while(1)
+    {
+        cout<<"\n\n1.Insert at End \n2.Insert at Beginning \n3.Insert element at any position \n4.Delete of choice \n5.Display \n6. Delete from beginning \n7. Delete from end \n9.Exit \nEnter your choice:";
+        cin>>ch;
+        switch(ch)
+        {
+            case 1:
+                cout<<"Enter elements:";
+                cin>>n;
+                insert_end(n);
+                break;
+            case 2:
+                cout<<"Enter elements:";
+                cin>>n;
+                ins_beg(n);
+                break;
+            case 3:
+                ins_choice();
+                break;
+            case 4:
+                cout<<"Enter the node to be deleted: ";
+                cin>>n;
+                del_choice(n);
+                break;
+            case 5:
+                display();
+                break;
+            case 6:
+                delete_beg();
+                break;
+            case 7:
+                delete_end();
+                break;
+            case 9:
+                return 0;
+                cout<<"Invaild choice";
+        }
+        getch();
+    }
+    return 0;
+}
+
+....................................................................
+
+// link list -stack
+#include <iostream.h>
+#include <conio.h>
+using namespace std;
+
+class node
+{
+  public:
+    int data;
+    struct node *link;
+    node(int n)
+    {
+        this->data=n;
+        this->link=NULL;
+    }
+};
+class stack
+{
+  public:
+    void display();
+    node* top;
+  public:
+    stack()
+    {
+        top=NULL;
+    }
+    void push(int data)
+    {
+        node *t=new node(data);
+        if(!t)
+        {
+            cout<<"stack overflow";
+            exit(1);
+        }
+        else
+        {
+            t->data=data;
+            t->link=top;
+            top=t;
+            cout<<"element pushed";
+        }
+    }
+    void pop()
+    {
+        int n;
+        node*t;
+        if(top==NULL)
+        {
+            cout<<"stack underflow";
+            return;
+        }
+        else
+        {
+            t=top;
+            n=t->data;
+            top=top->link;
+            cout<<"Element popped:"<< t->data;
+            free(t);
+        }
+    }
+};
+void stack:: display()
+{
+    node*t;
+    if(top==NULL)
+    {
+        cout<<"stack is empty";
+        
+    }
+    
+    else
+    {
+        for(t=top; t!=NULL; t=t->link)
+        {
+            cout<<t->data<<endl;
+        }
+    }
+}
+int main()
+{
+    stack st;
+    int ch,data;
+    while(1)
+    {
+        clrscr();
+        cout<<"1. push\n2. pop\n3. display\n4. exit\nenter the choice: ";
+        cin>>ch;
+        switch(ch)
+        {
+            case 1:
+                cout<<"ENTER THE ELEMENT TO BE PUSHED: ";
+                cin>>data;
+                st.push(data);
+                break;
+            case 2:
+                st.pop();
+                break;
+            case 3:
+                st.display();
+                break;
+            case 4:
+                return 0;
+            default:
+                cout<<"INVALID CHOICE!ERROR 404!";
+        }
+        getch();
+    }
+    return 0;
 }
