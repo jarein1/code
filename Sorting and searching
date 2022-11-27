@@ -1,0 +1,37 @@
+// Selection sort.
+void selsort(int [],int);
+int main()
+{
+    int t,arr[50],i;
+    cout<<"Enter the size of the array: ";
+    cin>>t;
+    cout<<"Enter the elements : ";
+    for(i=0; i<t; i++)
+        cin>>arr[i];
+    selsort(arr,t);
+    cout<<"Selection sort array is : \n";
+    for(i=0; i<t; i++)
+        cout<<arr[i]<<" ";
+    cout<<endl;
+    return 0;
+}
+void selsort(int a[],int n)
+{
+    int i,j,tt,p;
+    for(i=0; i<(n-1); i++)
+    {
+        p=i;			// temporarily keeping the initial value
+        for(j=i+1; j<n; j++)
+        {
+            if(a[j]<a[p])
+                p=j; //swapping with the smallest element
+        }
+        if(i!=p) 			//not same value
+        {
+            tt=a[i];
+            a[i]=a[p];
+            a[p]=tt;
+            
+        }
+    }
+}
