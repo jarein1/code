@@ -116,3 +116,125 @@ int main()
         cout<<"This is not a sparce matrix."<<endl;
     return 0;
 }
+..............................................................................
+// Symmetric array
+#include <iostream.h>
+#include <conio.h>
+using namespace std;
+
+class symmetric
+{
+  private:
+    int a[10][10],r,c;
+  public:
+    void input();
+    void display();
+};
+
+void symmetric::input()
+{
+    int i,j;
+    cout<<"ENTER THE NUMBER OF ROWS AND COLUMNS:";
+    cin>>r>>c;
+    cout<<"ENTER THE ELEMENTS:\n";
+    for(i=0; i<r; i++)
+    {
+        for(j=0; j<c; j++)
+        {
+            cin>>a[i][j];
+        }
+    }
+    
+}
+
+void symmetric::display()
+{
+    int i,j,f=0;
+    if(r!=c)
+    {
+        cout<<"It is not a symmetric matrix";
+    }
+    else
+    {
+        for(i=0; i<r; i++)
+        {
+            for(j=0; j<c; j++)
+            {
+            
+                if(a[i][j]!=a[j][i] && i==j)
+                {
+                    f=0;
+                    break;
+                }
+                else
+                {
+                    f=1;
+                }
+            }
+        }
+        if(f==1)
+            cout<<"It is symmetric matrix";
+        else
+            cout<<"It is not a symmetric matrix";
+    }
+}
+
+int main()
+{
+    symmetric ob;
+    ob.input();
+    ob.display();
+    
+    return 0;
+}
+......................................................................
+// Transpose
+#include <iostream.h>
+#include <conio.h>
+using namespace std;
+
+class transpose
+{
+  private:
+    int a[10][10],r,c;
+  public:
+    void input();
+    void display();
+};
+
+void transpose::input()
+{
+    int i,j;
+    cout<<"ENTER THE NUMBER OF ROWS AND COLUMNS:";
+    cin>>r>>c;
+    cout<<"ENTER THE ELEMENTS:\n";
+    for(i=0; i<r; i++)
+    {
+        for(j=0; j<c; j++)
+        {
+            cin>>a[i][j];
+        }
+    }
+    
+}
+
+void transpose::display()
+{
+    int i,j;
+    cout<<"THE TRANSPOSED MATRIX :\n";
+    for(i=0; i<c; i++)
+    {
+        for(j=0; j<r; j++)
+            cout<<a[j][i]<<"\t";
+        cout<<endl;
+        
+    }
+}
+
+int main()
+{
+    transpose ob;
+    ob.input();
+    ob.display();
+    return 0;
+}
