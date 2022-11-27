@@ -1,94 +1,337 @@
-#include <iostream.h>
-#include <conio.h>
-//#define=macro(code replacement technique)throughout the program value of size=5
-#define size 5
-using namespace std;
+// stack implementation
 
-class Stack
+#include <iostream.h>
+#include <string.h>
+#include <conio.h>
+#include <stdio.h>
+#define max 50
+class stack
 {
-  private://data member
-    int a[size],top;//a[size]=a[5],top=to hold the index of the latest/newest/last inserted element
-  public://member method
-    void push(int);
+
+    char s[max];
+    int top;
+  public:
+    void push(char);
     char pop();
-    void display();
-    Stack()//constructor
+    char getEle();
+    stack()
     {
-        top=-1;
+        top -1;
     }
 };
-
-void Stack::push(int x)//insterting the elements
+int checkprio(char op)
 {
-    if(top==size-1)//checking for stack overflow
-    {
-        cout<<"STACK OVERFLOW";
-    }
+    if(op =='^')
+        return 3;
+    else if(op== '%'|| op =='/' ||op=='*')
+        return 2;
+    else if(op== '+'|| op =='-')
+        return 1;
+    else if(op=='(')
+        return 0;
     else
-    {
+        return-1;
+}
+char stack:: getEle()
+{
+    return s[top];
+}
+void stack::push(char c)
+{
+    if(top>max-1)
+        cout <<"stack overloaded";
+    else
         top++;
-        a[top]=x;
-        cout<<"ELEMENT PUSHED";
-    }
+    s[top]=c;
 }
-char Stack::pop()
+char stack::pop()
 {
     if(top==-1)
     {
-        cout<<"STACK UNDERFLOW";
-        return 'f';
+        cout<<"stack underflow";
+        return 0;
     }
     else
     {
-        cout<<"POP ELEMENT="<<a[top];
-        top--;
-        return 't';
+        char c= s[top];
+        top --;
+        return c;
     }
-    
 }
-
-void Stack::display()
+class pos
 {
-    if(top==-1)
-        cout<<"STACK IS EMPTY";
-    else
+    char inf[50];
+    char pos[50];
+  public:
+    void input();
+    void con();
+    void display();
+};
+void pos::input()
+{
+    cout<<"Enter the expression";
+    gets(inf);
+}
+void pos:: con()
+{
+    stack s;
+    s.push('(');
+    strcat(inf,")");
+    char d,c;
+    strcpy(pos,"");
+    for(int i=0; i<strlen(inf); i++)
     {
-        cout<<"THE ELEMENTS ARE:\n";
-        for(int i=top; i>=0; i--)
+        c=inf[i];
+        if(c>='a'&&c<='z' ||c>='A'&& c<='Z')
         {
-            cout<<a[i]<<endl;
+            int l=strlen(pos);
+            pos[l]=c;
+            pos[l+1]=NULL;
         }
+        else if(c=='(')
+        {
+            s.push(c);
+        }
+        else if(c==')')
+        {
+            d=NULL;
+            while(1)
+            {
+                d=s.pop();
+                if(d!='(')
+                {
+                    int l=strlen(pos);
+                    pos[l]=d;
+                    pos[l+1]=NULL;
+                }
+                else
+                    break;
+            }
+        }
+        else if(checkprio(c) >=1)
+        {
+            while(checkprio(c)<=checkprio(s.getEle()&&s.getEle()!='('))
+            {
+                d=s.pop();
+                int l=strlen(pos);
+                pos[l]=c;
+                pos[l+1]=NULL;
+            }
+            s.push(c);
+        }
+        
     }
+}
+void pos::display()
+{
+    cout<<"The equivalent expression:" <<pos;
 }
 int main()
 {
-    Stack st;
-    int ch,n;
-    while(1)
+    pos ob;
+    ob.input();
+    ob.con();
+    ob.display();
+    return 0;
+}
+
+..............................................
+
+// infix_prefix
+
+//WAP to enter a matrix and check whether it is a diagonal  matrix or not
+#include <iostream.h>
+#include <conio.h>
+using namespace std;
+
+class diagonal
+{
+  private:
+    int a[10][10],r,c;
+  public:
+    void input();
+    char checkDiagonal();
+};
+//inputing
+void diagonal::input()
+{
+    int i,j;
+    cout<<"ENTER THE NUMBER OF ROWS AND COLUMNS:";
+    cin>>r>>c;
+    cout<<"ENTER THE ELEMENTS:\n";
+    for(i=0; i<r; i++)
     {
-        clrscr();
-        cout<<"1. push\n2. pop\n3. display\n4. exit\nenter the choice: ";
-        cin>>ch;
-        switch(ch)
+        for(j=0; j<c; j++)
         {
-            case 1:
-                cout<<"ENTER THE ELEMENT TO BE PUSHED: ";
-                cin>>n;
-                st.push(n);
-                break;
-            case 2:
-                st.pop();
-                break;
-            case 3:
-                st.display();
-                break;
-            case 4:
-                return 0;
-            default:
-                cout<<"INVALID CHOICE!ERROR 404!";
+            cin>>a[i][j];
         }
-        getch();
     }
     
+}
+//boolean data type is not supported in c++
+char diagonal::checkDiagonal()
+{
+    if(r!=c)
+        return 0;
+    for(int i=0; i<r; i++)//accessing the elements of the matrix
+    {
+        for(int j=0; j<c; j++)
+        {
+            if(i==j && a[i][j]==0)//checking if the diagonal elements is zero
+                return 0;
+            else if(i!=j && a[i][j]!=0)//checking if the non-diagonal elements is non-zero
+                return 0;
+        }
+    }
+    return 1;
+}
+
+int main()
+{
+    diagonal ob;
+    ob.input();
+    if(ob.checkDiagonal()==1)
+        cout<<"IT IS A DIAGONAL MATRIX";
+    else
+        cout<<"IT IS NOT A DIAGONAL MATRIX";
+    return 0;
+}
+...................................................................................
+
+// infix-postfix
+#include <iostream>
+#include <string.h>
+#include <conio.h>
+#include <stdio.h>
+#define max 50
+using namespace std;
+class stack
+{
+    char s[max];
+    int top;
+  public:
+    stack();
+    void push(char);
+    char pop();
+    char getEle();		// to get top elements
+};
+int checkProprity(char op)
+{
+    if(op=='^')
+        return 3;
+    else if(op=='/'||op=='%'||op=='*')
+        return 2;
+    else if(op=='+' || op=='-')
+        return 1;
+    else if(op=='(')
+        return 0;
+    else
+        return -1;
+}
+char stack::getEle()
+{
+    return s[top];
+}
+stack::stack()
+{
+    top =-1;			// initialising the value of top to be -1 so that it starts with 0
+}
+void stack::push(char c)
+{
+    if(top ==max-1)
+        cout <<"Stack overflow";
+    else
+    {
+        top ++;
+        s[top]=c; 			// the value is being pushed and stored in s[top] from c
+    }
+}
+char stack :: pop()
+{
+    if(top==-1)
+    {
+        cout<<"Stack Underflow";
+        return NULL;
+    }
+    else
+    {
+        char c=s[top];
+        top--;				// since we got the max value therefore we are popping and the value is being decreased
+        return c;
+    }
+}
+class infix_to_postfix
+{
+    char infix[50];
+    char postf[50];
+  public:
+    void input();
+    void convert();
+    void display();
+};
+void infix_to_postfix::input()
+{
+    cout<<"Enter the Expression:";
+    gets(infix); 	// being stored in infix
+}
+void infix_to_postfix:: convert()
+{
+    stack s;
+    s.push('(');
+    strcat(infix,")");  // string concatination ( a bracket is being added after the last word)
+    char c,d;
+    strcpy(postf,"");	// blank string
+    for(int i =0; i<strlen(infix); i++)
+    {
+        c=infix[i];			//value of infix is being stored in c for checking
+        if(c>='a' && c<='z' ||c>='A' && c<='Z')
+        {
+            int l=strlen(postf);
+            postf[l]=c;
+            postf[l+1]=NULL;
+        }
+        else if(c=='(')
+        {
+            s.push(c);
+        }
+        else if(c==')')
+        {
+            d=NULL;
+            while(1)		//infinite loop
+            {
+                d=s.pop();
+                if(d!='(')
+                {
+                    int l=strlen(postf);
+                    postf[l]=d;
+                    postf[l+1]=NULL;
+                }
+                else
+                    break;
+            }
+        }
+        else if(checkProprity(c)>=1)
+        {
+            while(checkProprity(c)<=checkProprity(s.getEle())&& s.getEle()!='(')
+            {
+                d=s.pop();
+                int l=strlen(postf);
+                postf[l]=d;
+                postf[l+1]=NULL;
+            }
+            s.push(c);
+        }
+    }
+}
+void infix_to_postfix::display()
+{
+    cout<<"EQUIVALENT POSTFIX EXPRESSION : "<<postf;
+}
+int main()
+{
+    infix_to_postfix ob;
+    ob.input();
+    ob.convert();
+    ob.display();
     return 0;
 }
