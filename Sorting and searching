@@ -35,3 +35,166 @@ void selsort(int a[],int n)
         }
     }
 }
+.......................................................................................
+// insertion sort
+
+#include <iostream>
+#include <conio.h>
+using namespace std;
+void insertionSort(int arr[], int n)
+{
+    int i,j,t;
+    for(i=1; i<n; i++)
+    {
+        t=arr[i];
+        for(j=i-1; j>=0; j--)
+        {
+            if(t<arr[j])
+                arr[j+1]=arr[j];
+            else
+                break;
+        }
+        arr[j+1]=t;
+    }
+}
+int main()
+{
+    int a[100],n,i;
+    cout<<"ENTER THE SIZE OF THE ARRAY : ";
+    cin>>n;
+    cout<<"Enter "<<n<<" Array Elements: ";
+    for(i=0; i<n; i++)
+        cin>>a[i];
+    insertionSort(a,n);
+    cout<<"\nSorted Array is:\n";
+    for(i=0; i<n; i++)
+        cout<<a[i]<<" ";
+    cout<<endl;
+    return 0;
+}
+..........................................................................
+// linear search
+
+#include <iostream>
+#include <conio.h>
+using namespace std;
+
+int main()
+{
+    int t,arr[50],i,c;
+    cout<<"Enter the size of the array: ";
+    cin>>t;
+    cout<<"Enter the elements : ";
+    for(i=0; i<t; i++)
+        cin>>arr[i];
+    cout<<"Enter the element to be searched: ";
+    cin>>c;
+    for(i=0; i<t; i++)
+    {
+        if(arr[i]==c)
+        {
+            cout<< "The searched result is present in index :"<< i;
+            break;
+        }
+    }
+    if(i==t)
+        cout<< c<<" is not present int the array";
+    return 0;
+}
+.....................................................................................................................
+// Binary search
+#include <iostream.h>
+#include <conio.h>
+#define sz 50
+using namespace std;
+
+class binary
+{
+  public:
+    void search();
+};
+void binary:: search()
+{
+    int a[sz],st=0,end=sz-1,f=0,mid=0,sc,n,i;
+    cout<<"Enter the size of the array: ";
+    cin>>n;
+    cout<<"Enter the elements : ";
+    for(i=0; i<n; i++)
+        cin>>a[i];
+    cout<<"Enter the element to be searched: ";
+    cin>>sc;
+    while(st<end)
+    {
+        mid=(st+end)/2;
+        if(sc==a[mid])
+        {
+            cout<<"The value is present at the index: "<<mid;
+            f=1;
+            break;
+        }
+        else if(a[mid]<sc)
+        {
+            st=mid+1;
+        }
+        else
+        {
+            end =mid-1;
+        }
+    }
+    if(f==0)
+        cout<<("Value is not present");
+};
+int main()
+{
+    binary ob;
+    ob.search();
+    return 0;
+}
+...........................................................................................
+// Bubble sort in C++
+
+#include <iostream>
+using namespace std;
+
+// perform bubble sort
+void bubbleSort(int array[], int size) {
+
+  // loop to access each array element
+  for (int step = 0; step < size; ++step) {
+      
+    // loop to compare array elements
+    for (int i = 0; i < size - step; ++i) {
+
+      // compare two adjacent elements
+      // change > to < to sort in descending order
+      if (array[i] > array[i + 1]) {
+
+        // swapping elements if elements
+        // are not in the intended order
+        int temp = array[i];
+        array[i] = array[i + 1];
+        array[i + 1] = temp;
+      }
+    }
+  }
+}
+
+// print array
+void printArray(int array[], int size) {
+  for (int i = 0; i < size; ++i) {
+    cout << "  " << array[i];
+  }
+  cout << "\n";
+}
+
+int main() {
+  int data[] = {-2, 45, 0, 11, -9};
+  
+  // find array's length
+  int size = sizeof(data) / sizeof(data[0]);
+  
+  bubbleSort(data, size);
+  
+  cout << "Sorted Array in Ascending Order:\n";  
+  printArray(data, size);
+}
